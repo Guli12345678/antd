@@ -1,7 +1,6 @@
 import {
   Button,
   Typography,
-  Table,
   Popconfirm,
   Modal,
   Form,
@@ -11,7 +10,7 @@ import {
   Card,
 } from "antd";
 import { memo, useEffect, useState } from "react";
-import type { FormProps, TableProps } from "antd";
+import type { FormProps } from "antd";
 import { api } from "../api";
 import dayjs from "dayjs";
 
@@ -84,55 +83,6 @@ const Student = () => {
     });
     showModal();
   };
-
-  const columns: TableProps<DataType>["columns"] = [
-    {
-      title: "№",
-      key: "index",
-      render: (_value, _item, index) => {
-        return index + 1;
-      },
-    },
-    {
-      title: "Full Name",
-      dataIndex: "fname",
-      key: "fname",
-    },
-    {
-      title: "Last Name",
-      dataIndex: "lname",
-      key: "lname",
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "phone",
-    },
-    {
-      title: "Gender",
-      dataIndex: "gender",
-      key: "gender",
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_value, item) => (
-        <div>
-          <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={() => handleDelete(item.id)}
-            onCancel={handleCancel}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button>Delete</Button>
-          </Popconfirm>
-          <Button onClick={() => handleUpdate(item)}>Update</Button>
-        </div>
-      ),
-    },
-  ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
