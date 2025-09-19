@@ -151,7 +151,7 @@ const Student = () => {
 
   return (
     <div className="container mx-auto py-6">
-      <div className="bg-red-200 p-4 rounded-lg flex justify-between">
+      <div className="bg-slate-100 p-4 rounded-lg flex justify-between">
         <Typography.Title level={3}>
           {editingItem ? "Update Student" : "Create Student"}
         </Typography.Title>
