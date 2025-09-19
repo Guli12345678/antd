@@ -8,6 +8,7 @@ import {
   Input,
   Radio,
   DatePicker,
+  Card,
 } from "antd";
 import { memo, useEffect, useState } from "react";
 import type { FormProps, TableProps } from "antd";
@@ -160,13 +161,51 @@ const Student = () => {
         </Button>
       </div>
 
-      <div className="mt-6">
-        <Table<DataType>
-          columns={columns}
-          rowKey={"id"}
-          pagination={false}
-          dataSource={data}
-        />
+      <div className="mt-6 flex flex-wrap gap-10 mx-auto">
+        {data?.map((item) => (
+          <Card
+            title="Default size card"
+            extra={<a href="#">More</a>}
+            style={{ width: 300 }}
+          >
+            <div key={item.id}>
+              <p>
+                <b>Full Name: </b>
+                {item.fname}
+              </p>
+              <p>
+                <b>Last Name: </b>
+                {item.lname}
+              </p>
+              <p>
+                <b>Gender: </b>
+                {item.gender}
+              </p>
+              <p>
+                <b>Birth Date: </b>
+                {item.birth_date}
+              </p>
+              <p>
+                <b>Phone: </b>
+                {item.phone}
+              </p>
+              <hr className="mt-5" />
+              <div className="mt-4 flex justify-center gap-5">
+                <Popconfirm
+                  title="Delete the task"
+                  description="Are you sure to delete this task?"
+                  onConfirm={() => handleDelete(item.id)}
+                  onCancel={handleCancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <Button>Delete</Button>
+                </Popconfirm>
+                <Button onClick={() => handleUpdate(item)}>Update</Button>
+              </div>
+            </div>
+          </Card>
+        ))}
       </div>
 
       <Modal
